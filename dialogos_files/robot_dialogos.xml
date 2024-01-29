@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE wizard SYSTEM "Wizard.dtd">
+
+<wizard>
+	<plugin type="dialogos.plugin.tts">
+	</plugin>
+	<plugin type="dialogos.plugin.sphinx">
+		<att name="language" type="string" value="de_DE"/>
+	</plugin>
+	<graph directed="1" Graphic="1" Layout="points">
+		<att name="width" type="integer" value="1145"/>
+		<att name="height" type="integer" value="793"/>
+		<groovyFunctions></groovyFunctions>
+		<node uid="0a75c338-3919-4e14-811f-154146cab40c" class="de.saar.coli.dialogos.marytts.plugin.TTSNode">
+			<graphics x="480" y="93" fill="#00b200"/>
+			<att name="title" type="string" value="Speech synthesis"/>
+			<att name="prompt" type="text">
+				<value>Möchten sie longitudinale oder laterale Bewegungen ausführen?</value>
+			</att>
+			<att name="prompt_type" type="string" value="text"/>
+			<att name="wait" type="boolean" value="1"/>
+			<att name="await_silence" type="boolean" value="0"/>
+		</node>
+		<node uid="0f7c0ec1-a739-4bf2-801a-a4051dde22f4" class="com.clt.diamant.graph.nodes.SleepNode">
+			<graphics x="178" y="38" fill="#99ffff"/>
+			<att name="title" type="string" value="structure"/>
+			<att name="time" type="string" value="0"/>
+		</node>
+		<node uid="14ffc1d5-7c86-43e3-96a9-ec27eba26de8" class="com.clt.diamant.graph.nodes.OutputNode">
+			<graphics x="284" y="422" fill="#00cc99"/>
+			<att name="title" type="string" value="ros_for"/>
+			<att name="reset" type="boolean" value="0"/>
+			<att name="wait" type="boolean" value="0"/>
+		</node>
+		<node uid="18dcab0c-8ee5-436a-8640-dd03edc8efbd" class="de.saar.coli.dialogos.marytts.plugin.TTSNode">
+			<graphics x="398" y="367" fill="#00b200"/>
+			<att name="title" type="string" value="rückwärts"/>
+			<att name="prompt" type="text">
+				<value>Der Roboter fährt nun rückwärts!</value>
+			</att>
+			<att name="prompt_type" type="string" value="text"/>
+			<att name="wait" type="boolean" value="1"/>
+			<att name="await_silence" type="boolean" value="0"/>
+		</node>
+		<node uid="1bf67d55-6f24-4333-89f9-294324dbb184" class="com.clt.diamant.graph.nodes.SleepNode">
+			<graphics x="587" y="477" fill="#99ffff"/>
+			<att name="title" type="string" value="Wait"/>
+			<att name="time" type="string" value="5000"/>
+		</node>
+		<node uid="32c645d2-6faa-40ad-b713-c0528724ad83" class="de.saar.coli.dialogos.marytts.plugin.TTSNode">
+			<graphics x="475" y="587" fill="#00b200"/>
+			<att name="title" type="string" value="Speech synthesis"/>
+			<att name="prompt" type="text">
+				<value>Soll der Roboter weitere Bewegungen ausführen?</value>
+			</att>
+			<att name="prompt_type" type="string" value="text"/>
+			<att name="wait" type="boolean" value="1"/>
+			<att name="await_silence" type="boolean" value="0"/>
+		</node>
+		<node uid="448bdc65-051c-4787-8271-c4140d597045" class="de.saar.coli.dialogos.marytts.plugin.TTSNode">
+			<graphics x="251" y="367" fill="#00b200"/>
+			<att name="title" type="string" value="vorwärts"/>
+			<att name="prompt" type="text">
+				<value>Der Roboter fährt nun vorwärts!</value>
+			</att>
+			<att name="prompt_type" type="string" value="text"/>
+			<att name="wait" type="boolean" value="1"/>
+			<att name="await_silence" type="boolean" value="0"/>
+		</node>
+		<node uid="4d0ec2ae-3207-432d-9692-c4cb4346ab8b" class="de.saar.coli.dialogos.marytts.plugin.TTSNode">
+			<graphics x="582" y="367" fill="#00b200"/>
+			<att name="title" type="string" value="links"/>
+			<att name="prompt" type="text">
+				<value>Der Roboter dreht nun links!</value>
+			</att>
+			<att name="prompt_type" type="string" value="text"/>
+			<att name="wait" type="boolean" value="1"/>
+			<att name="await_silence" type="boolean" value="0"/>
+		</node>
+		<node uid="4f45cb0d-9d0a-4046-8f1c-53ce5e65a69f" class="com.clt.diamant.graph.nodes.SleepNode">
+			<graphics x="431" y="477" fill="#99ffff"/>
+			<att name="title" type="string" value="Wait"/>
+			<att name="time" type="string" value="5000"/>
+		</node>
+		<node uid="55e7cc86-0aa3-4742-af8c-9eb7e15bdba9" class="com.clt.diamant.graph.nodes.OutputNode">
+			<graphics x="681" y="422" fill="#00cc99"/>
+			<att name="title" type="string" value="ros_right"/>
+			<att name="reset" type="boolean" value="0"/>
+			<att name="wait" type="boolean" value="0"/>
+		</node>
+		<node uid="7063c9ff-ffc6-441f-9653-6e19c6624911" class="edu.cmu.lti.dialogos.sphinx.plugin.SphinxNode">
+			<graphics x="325" y="312" fill="#b20000"/>
+			<att name="title" type="string" value="Speech recognizer"/>
+			<att name="language" type="string" value="Deutsch"/>
+		</node>
+		<node uid="75493222-50af-4872-9a1a-2cc5be1fa585" class="com.clt.diamant.graph.nodes.SleepNode">
+			<graphics x="431" y="532" fill="#99ffff"/>
+			<att name="title" type="string" value="ros_in"/>
+			<att name="time" type="string" value="0"/>
+		</node>
+		<node uid="7834da27-7d1b-4a40-b156-1629ce28c553" class="edu.cmu.lti.dialogos.sphinx.plugin.SphinxNode">
+			<graphics x="476" y="642" fill="#b20000"/>
+			<att name="title" type="string" value="Speech recognizer"/>
+			<att name="language" type="string" value="Deutsch"/>
+		</node>
+		<node uid="871b662c-e12c-427e-83df-6f152f746fc3" class="com.clt.diamant.graph.nodes.SleepNode">
+			<graphics x="102" y="697" fill="#99ffff"/>
+			<att name="title" type="string" value="structure"/>
+			<att name="time" type="string" value="0"/>
+		</node>
+		<node uid="87eb6a53-1440-4d8e-ad29-23d95486ebc5" class="com.clt.diamant.graph.nodes.SleepNode">
+			<graphics x="284" y="532" fill="#99ffff"/>
+			<att name="title" type="string" value="ros_in"/>
+			<att name="time" type="string" value="0"/>
+		</node>
+		<node uid="9b4a816a-f290-46be-bfe7-18263d896512" class="de.saar.coli.dialogos.marytts.plugin.TTSNode">
+			<graphics x="599" y="255" fill="#00b200"/>
+			<att name="title" type="string" value="lateral"/>
+			<att name="prompt" type="text">
+				<value>Sie moechten eine laterale Bewegung ausführen. Soll sich der Roboter nach links oder nach rechts drehen?</value>
+			</att>
+			<att name="prompt_type" type="string" value="text"/>
+			<att name="wait" type="boolean" value="1"/>
+			<att name="await_silence" type="boolean" value="0"/>
+		</node>
+		<node uid="a8e1b6a2-23df-438f-bdfd-7481971308fb" class="de.saar.coli.dialogos.marytts.plugin.TTSNode">
+			<graphics x="489" y="697" fill="#00b200"/>
+			<att name="title" type="string" value="Speech synthesis"/>
+			<att name="prompt" type="text">
+				<value>Danke für die Benutzung des Roboters!</value>
+			</att>
+			<att name="prompt_type" type="string" value="text"/>
+			<att name="wait" type="boolean" value="1"/>
+			<att name="await_silence" type="boolean" value="0"/>
+		</node>
+		<node uid="a9ea6c7c-bf1b-4ac7-97f2-d1e6c9f71e1d" class="de.saar.coli.dialogos.marytts.plugin.TTSNode">
+			<graphics x="324" y="257" fill="#00b200"/>
+			<att name="title" type="string" value="longitudinal"/>
+			<att name="prompt" type="text">
+				<value>Sie möchten eine longitudinale Bewegung ausfuehren. Soll sich der Roboter vorwärts oder rückwärts bewegen?</value>
+			</att>
+			<att name="prompt_type" type="string" value="text"/>
+			<att name="wait" type="boolean" value="1"/>
+			<att name="await_silence" type="boolean" value="0"/>
+		</node>
+		<node uid="b5473ad1-5fcb-4244-9f4a-2d42822adafd" class="com.clt.diamant.graph.nodes.SleepNode">
+			<graphics x="682" y="532" fill="#99ffff"/>
+			<att name="title" type="string" value="ros_in"/>
+			<att name="time" type="string" value="0"/>
+		</node>
+		<node uid="bbe69ea2-0ec3-443b-ba0a-848405ca4984" class="com.clt.diamant.graph.nodes.OutputNode">
+			<graphics x="431" y="422" fill="#00cc99"/>
+			<att name="title" type="string" value="ros_bac"/>
+			<att name="reset" type="boolean" value="0"/>
+			<att name="wait" type="boolean" value="0"/>
+		</node>
+		<node uid="c09b7484-53bd-42f1-a85c-9dce2ab8397e" class="com.clt.diamant.graph.nodes.SleepNode">
+			<graphics x="587" y="532" fill="#99ffff"/>
+			<att name="title" type="string" value="ros_in"/>
+			<att name="time" type="string" value="0"/>
+		</node>
+		<node uid="c8cb74a8-e138-463a-9d38-1ff3b30eadf8" class="com.clt.diamant.graph.nodes.SleepNode">
+			<graphics x="284" y="477" fill="#99ffff"/>
+			<att name="title" type="string" value="Wait"/>
+			<att name="time" type="string" value="5000"/>
+		</node>
+		<node uid="d1d5defa-7b63-4731-922d-ebbf9f86060b" class="de.saar.coli.dialogos.marytts.plugin.TTSNode">
+			<graphics x="674" y="367" fill="#00b200"/>
+			<att name="title" type="string" value="rechts"/>
+			<att name="prompt" type="text">
+				<value>Der Roboter dreht nun rechts!</value>
+			</att>
+			<att name="prompt_type" type="string" value="text"/>
+			<att name="wait" type="boolean" value="1"/>
+			<att name="await_silence" type="boolean" value="0"/>
+		</node>
+		<node uid="dbd8d47b-5a9d-47d6-b927-896611597342" class="edu.cmu.lti.dialogos.sphinx.plugin.SphinxNode">
+			<graphics x="481" y="160" fill="#b20000"/>
+			<att name="title" type="string" value="Speech recognizer"/>
+			<att name="language" type="string" value="Deutsch"/>
+		</node>
+		<node uid="e342c9f8-d8bd-4190-9358-c4cedc56451c" class="com.clt.diamant.graph.nodes.SleepNode">
+			<graphics x="682" y="477" fill="#99ffff"/>
+			<att name="title" type="string" value="Wait"/>
+			<att name="time" type="string" value="5000"/>
+		</node>
+		<node uid="ebc0f813-9a51-4260-ad7e-e27bd30a06d3" class="com.clt.diamant.graph.nodes.OutputNode">
+			<graphics x="586" y="422" fill="#00cc99"/>
+			<att name="title" type="string" value="ros_left"/>
+			<att name="reset" type="boolean" value="0"/>
+			<att name="wait" type="boolean" value="0"/>
+		</node>
+		<node uid="ede8f4de-6a69-4013-bd6d-94528fd28b36" class="com.clt.diamant.graph.nodes.EndNode">
+			<graphics x="630" y="698" fill="#9999ff"/>
+			<att name="title" type="string" value="End"/>
+		</node>
+		<node uid="f446b99a-15bb-46da-a988-47112eefed63" class="edu.cmu.lti.dialogos.sphinx.plugin.SphinxNode">
+			<graphics x="600" y="312" fill="#b20000"/>
+			<att name="title" type="string" value="Speech recognizer"/>
+			<att name="language" type="string" value="Deutsch"/>
+		</node>
+		<node uid="ff19a287-8108-4f7c-8f9f-b4c85634bdef" class="com.clt.diamant.graph.nodes.StartNode">
+			<graphics x="512" y="29" fill="#9999ff"/>
+			<att name="title" type="string" value="Start"/>
+		</node>
+		<edge src="0a75c338-3919-4e14-811f-154146cab40c" tgt="dbd8d47b-5a9d-47d6-b927-896611597342">
+		</edge>
+		<edge src="0f7c0ec1-a739-4bf2-801a-a4051dde22f4" tgt="0a75c338-3919-4e14-811f-154146cab40c">
+		</edge>
+		<edge src="14ffc1d5-7c86-43e3-96a9-ec27eba26de8" tgt="c8cb74a8-e138-463a-9d38-1ff3b30eadf8">
+		</edge>
+		<edge src="18dcab0c-8ee5-436a-8640-dd03edc8efbd" tgt="bbe69ea2-0ec3-443b-ba0a-848405ca4984">
+		</edge>
+		<edge src="1bf67d55-6f24-4333-89f9-294324dbb184" tgt="c09b7484-53bd-42f1-a85c-9dce2ab8397e">
+		</edge>
+		<edge src="32c645d2-6faa-40ad-b713-c0528724ad83" tgt="7834da27-7d1b-4a40-b156-1629ce28c553">
+		</edge>
+		<edge src="448bdc65-051c-4787-8271-c4140d597045" tgt="14ffc1d5-7c86-43e3-96a9-ec27eba26de8">
+		</edge>
+		<edge src="4d0ec2ae-3207-432d-9692-c4cb4346ab8b" tgt="ebc0f813-9a51-4260-ad7e-e27bd30a06d3">
+		</edge>
+		<edge src="4f45cb0d-9d0a-4046-8f1c-53ce5e65a69f" tgt="75493222-50af-4872-9a1a-2cc5be1fa585">
+		</edge>
+		<edge src="55e7cc86-0aa3-4742-af8c-9eb7e15bdba9" tgt="e342c9f8-d8bd-4190-9358-c4cedc56451c">
+		</edge>
+		<edge src="7063c9ff-ffc6-441f-9653-6e19c6624911" tgt="448bdc65-051c-4787-8271-c4140d597045">
+			<att name="condition" type="string" value="vorwärts"/>
+		</edge>
+		<edge src="7063c9ff-ffc6-441f-9653-6e19c6624911" tgt="18dcab0c-8ee5-436a-8640-dd03edc8efbd">
+			<att name="condition" type="string" value="rückwärts"/>
+		</edge>
+		<edge src="75493222-50af-4872-9a1a-2cc5be1fa585" tgt="32c645d2-6faa-40ad-b713-c0528724ad83">
+		</edge>
+		<edge src="7834da27-7d1b-4a40-b156-1629ce28c553" tgt="871b662c-e12c-427e-83df-6f152f746fc3">
+			<att name="condition" type="string" value="&quot;Ja&quot; | &quot;soll Bewegungen ausführen&quot;"/>
+		</edge>
+		<edge src="7834da27-7d1b-4a40-b156-1629ce28c553" tgt="a8e1b6a2-23df-438f-bdfd-7481971308fb">
+			<att name="condition" type="string" value="&quot;Nein&quot; | &quot;soll keine Bewegungen ausführen&quot;"/>
+		</edge>
+		<edge src="871b662c-e12c-427e-83df-6f152f746fc3" tgt="0f7c0ec1-a739-4bf2-801a-a4051dde22f4">
+		</edge>
+		<edge src="87eb6a53-1440-4d8e-ad29-23d95486ebc5" tgt="32c645d2-6faa-40ad-b713-c0528724ad83">
+		</edge>
+		<edge src="9b4a816a-f290-46be-bfe7-18263d896512" tgt="f446b99a-15bb-46da-a988-47112eefed63">
+		</edge>
+		<edge src="a8e1b6a2-23df-438f-bdfd-7481971308fb" tgt="ede8f4de-6a69-4013-bd6d-94528fd28b36">
+		</edge>
+		<edge src="a9ea6c7c-bf1b-4ac7-97f2-d1e6c9f71e1d" tgt="7063c9ff-ffc6-441f-9653-6e19c6624911">
+		</edge>
+		<edge src="b5473ad1-5fcb-4244-9f4a-2d42822adafd" tgt="32c645d2-6faa-40ad-b713-c0528724ad83">
+		</edge>
+		<edge src="bbe69ea2-0ec3-443b-ba0a-848405ca4984" tgt="4f45cb0d-9d0a-4046-8f1c-53ce5e65a69f">
+		</edge>
+		<edge src="c09b7484-53bd-42f1-a85c-9dce2ab8397e" tgt="32c645d2-6faa-40ad-b713-c0528724ad83">
+		</edge>
+		<edge src="c8cb74a8-e138-463a-9d38-1ff3b30eadf8" tgt="87eb6a53-1440-4d8e-ad29-23d95486ebc5">
+		</edge>
+		<edge src="d1d5defa-7b63-4731-922d-ebbf9f86060b" tgt="55e7cc86-0aa3-4742-af8c-9eb7e15bdba9">
+		</edge>
+		<edge src="dbd8d47b-5a9d-47d6-b927-896611597342" tgt="a9ea6c7c-bf1b-4ac7-97f2-d1e6c9f71e1d">
+			<att name="condition" type="string" value="long"/>
+		</edge>
+		<edge src="dbd8d47b-5a9d-47d6-b927-896611597342" tgt="9b4a816a-f290-46be-bfe7-18263d896512">
+			<att name="condition" type="string" value="lateral"/>
+		</edge>
+		<edge src="e342c9f8-d8bd-4190-9358-c4cedc56451c" tgt="b5473ad1-5fcb-4244-9f4a-2d42822adafd">
+		</edge>
+		<edge src="ebc0f813-9a51-4260-ad7e-e27bd30a06d3" tgt="1bf67d55-6f24-4333-89f9-294324dbb184">
+		</edge>
+		<edge src="f446b99a-15bb-46da-a988-47112eefed63" tgt="4d0ec2ae-3207-432d-9692-c4cb4346ab8b">
+			<att name="condition" type="string" value="links"/>
+		</edge>
+		<edge src="f446b99a-15bb-46da-a988-47112eefed63" tgt="d1d5defa-7b63-4731-922d-ebbf9f86060b">
+			<att name="condition" type="string" value="rechts"/>
+		</edge>
+		<edge src="ff19a287-8108-4f7c-8f9f-b4c85634bdef" tgt="0a75c338-3919-4e14-811f-154146cab40c">
+		</edge>
+	</graph>
+</wizard>
