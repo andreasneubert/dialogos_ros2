@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE wizard SYSTEM "Wizard.dtd">
+
+<wizard>
+	<plugin type="rosPlugin">
+	</plugin>
+	<graph directed="1" Graphic="1" Layout="points">
+		<att name="width" type="integer" value="759"/>
+		<att name="height" type="integer" value="542"/>
+		<groovyFunctions></groovyFunctions>
+		<variable uid="a83d2649-c889-4add-a411-0804c14aef37">
+			<name>testVar</name>
+			<type>string</type>
+			<value>&quot;val&quot;</value>
+		</variable>
+		<node uid="1e9805ef-086f-4e75-b919-6d0bf8b56141" class="rosPlugin.ROSInputNode">
+			<graphics x="375" y="169" fill="#c0c0c0"/>
+			<att name="title" type="string" value="ROSInput"/>
+			<att name="dialogosTopic" type="string" value="rosTopic"/>
