@@ -149,6 +149,7 @@ public class ROSInputNode extends Node {
     public Node execute(WozInterface wozInterface, InputCenter inputCenter, ExecutionLogger executionLogger) {
 
         List<String> messages = new ArrayList<>();
+        String message_string = "";
         switchSubscriberClient();
         if (getBooleanProperty(WAIT_FOR_MESSAGE)) {
             try {
@@ -169,6 +170,7 @@ public class ROSInputNode extends Node {
                         System.out.println("Message received: " + currentMessage);
                         if (currentMessage != null) {
                             messages.add(currentMessage);
+                            message_string = currentMessage;
                         }
                     } else {
                         System.out.println("Timeout: No message received within the specified time.");
