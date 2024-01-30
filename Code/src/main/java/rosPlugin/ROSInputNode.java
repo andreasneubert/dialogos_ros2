@@ -181,10 +181,9 @@ public class ROSInputNode extends Node {
             }
         }
 
-        // closeClient();
-        // System.out.println("exit after: " + topicName);
+
         ListValue messageList = new ListValue(messages.stream().map(StringValue::new).collect(Collectors.toList()));
-        // set variable to result of query
+        
         String varName = getProperty(RESULT_VAR).toString();
         Slot var = getSlot(varName);
         var.setValue(messageList);

@@ -77,7 +77,7 @@ public class ROSOutputNode extends Node {
                 client.publish(publisher);
 
                 Vector3Message vec_value = new Vector3Message(x_val, y_val, z_val);
-                Vector3Message vec_zero = new Vector3Message(x_val, y_val, z_val);
+                Vector3Message vec_zero = new Vector3Message(0,0, 0);
                 publisher.submit(new TwistMessage().withLinear(vec_value).withAngular(vec_zero));
 
                 publisher.close();
@@ -90,7 +90,7 @@ public class ROSOutputNode extends Node {
                 client.publish(publisher);
 
                 Vector3Message vec_value = new Vector3Message(x_val, y_val, z_val);
-                Vector3Message vec_zero = new Vector3Message(x_val, y_val, z_val);
+                Vector3Message vec_zero = new Vector3Message(0, 0, 0);
                 publisher.submit(new TwistMessage().withLinear(vec_zero).withAngular(vec_value));
 
                 publisher.close();
