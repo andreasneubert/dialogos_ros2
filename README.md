@@ -7,8 +7,6 @@ This graphic shows the original concept of the dialogsystem. In the end of the R
 
 ![concept](/graphics/conecpt_v1_0.png "communication concept")
 
-https://docs.ros.org/en/rolling/Tutorials/Advanced/Simulators/Gazebo/Gazebo.html
-
 # Installation instructions
 
 To run this DialogOS ROS2 functionality you need a Ubuntu 22.04 LTS operating system on your Computer. On the Ubuntu 22.04 you have to install three different things.
