@@ -115,7 +115,7 @@ With the project you can use ROS2 within DialogOS. It is now possibile to send d
 
 In the following graphic you can see our dialog. There is a big accordance between this and our initial concept from the beginning.
 
-![final](/graphics/dialogos_final.jpeg "final dialogos implementation")
+![final](/graphics/dialogos_final.jpg "final dialogos implementation")
 
 # Outlook
 
