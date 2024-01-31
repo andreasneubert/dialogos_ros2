@@ -73,7 +73,7 @@ With these steps finished the setup is completed.
 **Remeber to allways source ros2 in every terminal you are working on! (Alternatively you can write the command in your .bashrc)**
 
 ```
-source /opt/ros/foxy/setup.bash
+source /opt/ros/humble/setup.bash
 ```
 
 
