@@ -120,4 +120,4 @@ In the future there could be a GPS and SLAM implementation for the roboter to dr
 
 # Known issues
 
-The project can not run on a virtual machine, because there are some Networking/Port issues which we couldn't resolve in time. 
+The project can not run on a virtual machine, because there are some Networking/Port issues in the jros2client library which we couldn't resolve in time.
