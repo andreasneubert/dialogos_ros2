@@ -21,7 +21,6 @@ public class Plugin implements com.clt.dialogos.plugin.Plugin {
     public void initialize() {
         Node.registerNodeTypes(com.clt.speech.Resources.getResources().createLocalizedString("IONode"),
                 Arrays.asList(
-                // TextInputNode.class,
                 ROSInputNode.class,
                 ROSOutputNode.class));
     }
