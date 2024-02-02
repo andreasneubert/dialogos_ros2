@@ -115,18 +115,18 @@ public class ROSOutputNode extends Node {
     public JComponent createEditorComponent(Map<String, Object> properties) {
         JPanel p = new JPanel();
         p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
-
+    
         // Panel for ROS topic input
         JPanel horiz = new JPanel();
         horiz.add(new JLabel("ROS topic"));
         horiz.add(NodePropertiesDialog.createTextField(properties, TOPIC));
         p.add(horiz);
-
+    
         // Drop-down menu for ROS message type
         String[] options = { "String", "Int32", "geometry_msgs/Twist/Linear", "geometry_msgs/Twist/Angular" };
         JComboBox<String> comboBox = new JComboBox<>(options);
         comboBox.setSelectedItem(ROSMESSAGETYPE);
-
+    
         // ActionListener to update the selected option
         comboBox.addActionListener(new ActionListener() {
             @Override
@@ -137,40 +137,62 @@ public class ROSOutputNode extends Node {
                     if (!isVectorType) {
                         isVectorType = true;
                         addVectorInputPanel(p, properties);
+                        removeMessageInputPanel(p); // Remove message input panel
                     }
                 } else {
                     isVectorType = false;
+                    removeMessageInputPanel(p);
                     removeVectorInputPanel(p);
+                    addMessageInputPanel(p, properties); // Add message input panel
                 }
-
+    
                 System.out.println("ROSMESSAGE TYPE: " + ROSMESSAGETYPE);
-
+    
                 // Update node title
                 setNodeTitle(getProperty(TOPIC).toString());
-
+    
             }
         });
-
+    
         // Panel for ROS message type selection
         JPanel dropdownPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         dropdownPanel.add(new JLabel("Select RosMessageType"));
         dropdownPanel.add(comboBox);
         p.add(dropdownPanel);
-
-        // Panel for message expression input
-        horiz = new JPanel();
+    
+        if (!isVectorType) {
+            // Panel for message expression input
+            addMessageInputPanel(p, properties);
+        }
+    
+        return p;
+    }
+    
+    // Method to add panel for message expression input
+    private void addMessageInputPanel(JPanel parentPanel, Map<String, Object> properties) {
+        JPanel horiz = new JPanel();
         horiz.add(new JLabel("message expression"));
         horiz.add(NodePropertiesDialog.createTextField(properties, MESSAGE));
-        p.add(horiz);
-
-        if (isVectorType) {
-            // removeVectorInputPanel(p);
-            addVectorInputPanel(p, properties);
-        } else {
-            removeVectorInputPanel(p);
+        parentPanel.add(horiz);
+    }
+    
+    // Method to remove panel for message expression input
+    private void removeMessageInputPanel(JPanel parentPanel) {
+        Component[] components = parentPanel.getComponents();
+        for (Component component : components) {
+            if (component instanceof JPanel) {
+                JPanel panel = (JPanel) component;
+                if (panel.getComponentCount() > 0 && panel.getComponent(0) instanceof JLabel) {
+                    JLabel label = (JLabel) panel.getComponent(0);
+                    if ("message expression".equals(label.getText())) {
+                        parentPanel.remove(panel);
+                        parentPanel.revalidate();
+                        parentPanel.repaint();
+                        return;
+                    }
+                }
+            }
         }
-
-        return p;
     }
 
     // Method to add panel for vector input

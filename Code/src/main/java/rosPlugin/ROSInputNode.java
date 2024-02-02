@@ -58,7 +58,7 @@ public class ROSInputNode extends Node {
     public ROSInputNode() {
         addEdge(); // have one port for an outgoing edge
         setProperty(TOPIC, ""); // avoid running into null-pointers later
-        setProperty(RESULT_VAR, "");
+        setProperty(RESULT_VAR, null);
         setProperty(WAIT_FOR_MESSAGE, Boolean.TRUE);
         setProperty(TIMEOUT, "");
         client = null;
@@ -190,14 +190,6 @@ public class ROSInputNode extends Node {
 
     /** get the variable slot from the graph that matches the name */
     private Slot getSlot(String name) {
-        // List<Slot> slots = getListVariables();
-        // for (Slot slot : slots) {
-        // if (name.equals(slot.getName()))
-        // return slot;
-        // }
-        // throw new NodeExecutionException(this, "unable to find list variable with
-        // name " + name);
-
         List<Slot> slots = getStringVariables();
         for (Slot slot : slots) {
             if (name.equals(slot.getName()))
