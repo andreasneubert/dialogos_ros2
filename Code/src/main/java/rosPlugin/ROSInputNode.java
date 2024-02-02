@@ -7,6 +7,9 @@ import com.clt.diamant.graph.nodes.NodeExecutionException;
 import com.clt.diamant.gui.NodePropertiesDialog;
 import com.clt.script.exp.Value;
 import com.clt.script.exp.types.ListType;
+import com.clt.script.exp.Type;
+import com.clt.script.exp.TypeException;
+
 import com.clt.script.exp.values.IntValue;
 import com.clt.script.exp.values.ListValue;
 import com.clt.script.exp.values.RealValue;
@@ -21,17 +24,12 @@ import java.util.Map;
 import java.util.concurrent.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 import java.util.stream.Collectors;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
 
 import id.jros2client.JRos2ClientFactory;
 import id.jros2client.JRos2Client;
@@ -149,7 +147,7 @@ public class ROSInputNode extends Node {
     public Node execute(WozInterface wozInterface, InputCenter inputCenter, ExecutionLogger executionLogger) {
 
         List<String> messages = new ArrayList<>();
-        String message_string = "";
+        String message_string_value = "";
         switchSubscriberClient();
         if (getBooleanProperty(WAIT_FOR_MESSAGE)) {
             try {
@@ -170,7 +168,7 @@ public class ROSInputNode extends Node {
                         System.out.println("Message received: " + currentMessage);
                         if (currentMessage != null) {
                             messages.add(currentMessage);
-                            message_string = currentMessage;
+                            message_string_value = currentMessage;
                         }
                     } else {
                         System.out.println("Timeout: No message received within the specified time.");
@@ -181,18 +179,26 @@ public class ROSInputNode extends Node {
             }
         }
 
-
         ListValue messageList = new ListValue(messages.stream().map(StringValue::new).collect(Collectors.toList()));
-        
+        StringValue messageString = new StringValue(message_string_value);
+
         String varName = getProperty(RESULT_VAR).toString();
         Slot var = getSlot(varName);
-        var.setValue(messageList);
+        var.setValue(messageString);
         return getEdge(0).getTarget();
     }
 
     /** get the variable slot from the graph that matches the name */
     private Slot getSlot(String name) {
-        List<Slot> slots = getListVariables();
+        // List<Slot> slots = getListVariables();
+        // for (Slot slot : slots) {
+        // if (name.equals(slot.getName()))
+        // return slot;
+        // }
+        // throw new NodeExecutionException(this, "unable to find list variable with
+        // name " + name);
+
+        List<Slot> slots = getStringVariables();
         for (Slot slot : slots) {
             if (name.equals(slot.getName()))
                 return slot;
@@ -202,6 +208,13 @@ public class ROSInputNode extends Node {
 
     private List<Slot> getListVariables() {
         return this.getGraph().getAllVariables(Graph.LOCAL).stream().filter(slot -> slot.getType() instanceof ListType)
+                .collect(Collectors.toList());
+    }
+
+    private List<Slot> getStringVariables() {
+        return this.getGraph().getAllVariables(Graph.LOCAL)
+                .stream()
+                .filter(slot -> slot.getType().equals(Type.String))
                 .collect(Collectors.toList());
     }
 
@@ -217,7 +230,7 @@ public class ROSInputNode extends Node {
         horiz = new JPanel();
         horiz.add(new JLabel("return list of results to: "));
         horiz.add(NodePropertiesDialog.createComboBox(properties, RESULT_VAR,
-                getListVariables()));
+                getStringVariables()));
         p.add(horiz);
 
         JCheckBox waitBox = NodePropertiesDialog.createCheckBox(properties, WAIT_FOR_MESSAGE,
