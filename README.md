@@ -106,6 +106,25 @@ ros2 run ros_gz_bridge parameter_bridge /model/vehicle_blue/cmd_vel@geometry_msg
 
 Now you can start the dialogsystem. The robot should now be controlled via your voice!
 
+# Functionality
+## RosOutputNode
+The RosOutputNode enables users to publish messages to ROS Topics.
+### Inputs:
+
+1. **Ros Topic Name**: Specifies the name of the ROS Topic to which the message will be published.
+2. **Message Type**: Indicates the type of message to be published. Options include string, int, geometry_msgs/Twist/Linear, and geometry_msgs/Twist/Angular.
+3. **Message Expression or Vector Values**: Depending on the selected message type, users can provide either a message expression or vector values.
+
+## RosInputNode
+The RosInputNode allows for the reception of string-type ROS messages.
+### Inputs:
+
+1. **Ros Topic Name**: Specifies the name of the ROS Topic from which messages will be received.
+2. **Variable to Store the Result**: Designates the variable in which the received message will be stored.
+3. **Waiting Delay**: Specifies the duration for which the node will wait for messages before timing out.
+
+
+
 # What the project does
 
 With the project you can use ROS2 within DialogOS. It is now possibile to send data via DialogOS to ROS2-topics and receive data of ROS2-topics in DialogOS. Our dialog can control a basic roboter to turn left/right and drive forwards/backwards. 

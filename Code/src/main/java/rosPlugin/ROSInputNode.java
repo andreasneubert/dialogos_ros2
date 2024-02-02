@@ -220,7 +220,7 @@ public class ROSInputNode extends Node {
         p.add(horiz);
 
         horiz = new JPanel();
-        horiz.add(new JLabel("return list of results to: "));
+        horiz.add(new JLabel("return string to: "));
         horiz.add(NodePropertiesDialog.createComboBox(properties, RESULT_VAR,
                 getStringVariables()));
         p.add(horiz);
