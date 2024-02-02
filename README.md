@@ -16,7 +16,6 @@ At first you have to install ROS2 humble for Ubuntu 22.04 LTS. You can find deta
 ```
 https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html
 ```
-(Tip: Don't build ros2 from source, it takes more time and doesn't have functional impact here!)
 
 The second step is to install Java. For this you can use open-jdk with the version 17.0.9.
 Use the following instruction to install open-jdk:
