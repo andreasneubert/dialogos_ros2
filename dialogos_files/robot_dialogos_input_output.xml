@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE wizard SYSTEM "Wizard.dtd">
+
+<wizard>
+	<plugin type="rosPlugin">
+	</plugin>
+	<plugin type="dialogos.plugin.tts">
+	</plugin>
+	<plugin type="dialogos.plugin.sphinx">
+		<att name="language" type="string" value="de_DE"/>
+	</plugin>
+	<graph directed="1" Graphic="1" Layout="points">
+		<att name="width" type="integer" value="1488"/>
+		<att name="height" type="integer" value="1678"/>
+		<groovyFunctions></groovyFunctions>
+		<variable uid="0fe35552-98ee-40bc-a9d9-046fc29bc954">
+			<name>online</name>
+			<type>string</type>
+			<value>&quot;nein&quot;</value>
+		</variable>
+		<node uid="0a75c338-3919-4e14-811f-154146cab40c" class="de.saar.coli.dialogos.marytts.plugin.TTSNode">
+			<graphics x="480" y="93" fill="#00b200"/>
+			<att name="title" type="string" value="Speech synthesis"/>
+			<att name="prompt" type="text">
+				<value>Möchten sie longitudinale oder laterale Bewegungen ausführen?</value>
+			</att>
+			<att name="prompt_type" type="string" value="text"/>
+			<att name="wait" type="boolean" value="1"/>
+			<att name="await_silence" type="boolean" value="0"/>
+		</node>
+		<node uid="0f7c0ec1-a739-4bf2-801a-a4051dde22f4" class="com.clt.diamant.graph.nodes.SleepNode">
+			<graphics x="178" y="38" fill="#99ffff"/>
+			<att name="title" type="string" value="structure"/>
+			<att name="time" type="string" value="0"/>
+		</node>
+		<node uid="124c01df-b4ba-4f7a-90fd-3c54d56b5404" class="de.saar.coli.dialogos.marytts.plugin.TTSNode">
+			<graphics x="708" y="701" fill="#00b200"/>
+			<att name="title" type="string" value="Speech synthesis"/>
+			<att name="prompt" type="text">
+				<value>&quot;Der Roboter sendet die Nachricht&quot; + online;</value>
+			</att>
+			<att name="prompt_type" type="string" value="groovy"/>
+			<att name="wait" type="boolean" value="1"/>
+			<att name="await_silence" type="boolean" value="0"/>
+		</node>
+		<node uid="18dcab0c-8ee5-436a-8640-dd03edc8efbd" class="de.saar.coli.dialogos.marytts.plugin.TTSNode">
+			<graphics x="424" y="367" fill="#00b200"/>
+			<att name="title" type="string" value="rückwärts"/>
+			<att name="prompt" type="text">
+				<value>Der Roboter fährt nun rückwärts!</value>
+			</att>
+			<att name="prompt_type" type="string" value="text"/>
+			<att name="wait" type="boolean" value="1"/>
+			<att name="await_silence" type="boolean" value="0"/>
+		</node>
+		<node uid="1bf67d55-6f24-4333-89f9-294324dbb184" class="com.clt.diamant.graph.nodes.SleepNode">
+			<graphics x="587" y="477" fill="#99ffff"/>
+			<att name="title" type="string" value="Wait"/>
+			<att name="time" type="string" value="4000"/>
+		</node>
+		<node uid="27d8cbaf-9427-4d98-9d3e-cb6195ad41ea" class="com.clt.diamant.graph.nodes.ScriptNode">
+			<graphics x="740" y="601" fill="#99ffff"/>
+			<att name="title" type="string" value="Script"/>
+			<att name="script" type="text">
+				<value>online = &quot;Roboter nicht verfügbar!&quot;;</value>
+			</att>
+		</node>
+		<node uid="32c645d2-6faa-40ad-b713-c0528724ad83" class="de.saar.coli.dialogos.marytts.plugin.TTSNode">
+			<graphics x="475" y="587" fill="#00b200"/>
+			<att name="title" type="string" value="Speech synthesis"/>
+			<att name="prompt" type="text">
+				<value>Soll der Roboter weitere Bewegungen ausführen?</value>
+			</att>
+			<att name="prompt_type" type="string" value="text"/>
+			<att name="wait" type="boolean" value="1"/>
+			<att name="await_silence" type="boolean" value="0"/>
+		</node>
+		<node uid="3916d1e0-67a5-42bd-ac08-3aadacfb48fd" class="com.clt.diamant.graph.nodes.ConditionalNode">
+			<graphics x="719" y="21" fill="#c0c0c0"/>
+			<att name="title" type="string" value="Condition"/>
+			<att name="expression" type="string" value="online == &quot;Roboter verfügbar&quot;"/>
+		</node>
+		<node uid="4095063f-613d-491a-b434-1a358610bc3f" class="de.saar.coli.dialogos.marytts.plugin.TTSNode">
+			<graphics x="621" y="94" fill="#00b200"/>
+			<att name="title" type="string" value="Speech synthesis"/>
+			<att name="prompt" type="text">
+				<value>&quot;Der Roboter sendet die Nachricht:&quot; + online;</value>
+			</att>
+			<att name="prompt_type" type="string" value="groovy"/>
+			<att name="wait" type="boolean" value="1"/>
+			<att name="await_silence" type="boolean" value="0"/>
+		</node>
+		<node uid="448bdc65-051c-4787-8271-c4140d597045" class="de.saar.coli.dialogos.marytts.plugin.TTSNode">
+			<graphics x="285" y="367" fill="#00b200"/>
+			<att name="title" type="string" value="vorwärts"/>
+			<att name="prompt" type="text">
+				<value>Der Roboter fährt nun vorwärts!</value>
+			</att>
+			<att name="prompt_type" type="string" value="text"/>
+			<att name="wait" type="boolean" value="1"/>
+			<att name="await_silence" type="boolean" value="0"/>
+		</node>
+		<node uid="4aecacfe-9008-469f-81b6-1fc7d1b28cff" class="rosPlugin.ROSOutputNode">
+			<graphics x="676" y="538" fill="#c0c0c0"/>
+			<att name="title" type="string" value="rosTopic"/>
+			<att name="rosTopic" type="string" value="/model/vehicle_blue/cmd_vel"/>
+			<att name="rosMessageExpression" type="string" value=""/>
+			<att name="0.00" type="string" value="0"/>
+			<att name="0.01" type="string" value="0"/>
+			<att name="0.02" type="string" value="0"/>
+		</node>
+		<node uid="4d0ec2ae-3207-432d-9692-c4cb4346ab8b" class="de.saar.coli.dialogos.marytts.plugin.TTSNode">
+			<graphics x="582" y="367" fill="#00b200"/>
+			<att name="title" type="string" value="links"/>
+			<att name="prompt" type="text">
+				<value>Der Roboter dreht nun links!</value>
+			</att>
+			<att name="prompt_type" type="string" value="text"/>
+			<att name="wait" type="boolean" value="1"/>
+			<att name="await_silence" type="boolean" value="0"/>
+		</node>
+		<node uid="4ee341fb-7323-4103-a775-187144b1b108" class="rosPlugin.ROSOutputNode">
+			<graphics x="283" y="533" fill="#c0c0c0"/>
+			<att name="title" type="string" value="rosTopic"/>
+			<att name="rosTopic" type="string" value="/model/vehicle_blue/cmd_vel"/>
+			<att name="rosMessageExpression" type="string" value=""/>
+			<att name="0.00" type="string" value="0"/>
+			<att name="0.01" type="string" value="0"/>
+			<att name="0.02" type="string" value="0"/>
+		</node>
+		<node uid="4f45cb0d-9d0a-4046-8f1c-53ce5e65a69f" class="com.clt.diamant.graph.nodes.SleepNode">
+			<graphics x="431" y="478" fill="#99ffff"/>
+			<att name="title" type="string" value="Wait"/>
+			<att name="time" type="string" value="5000"/>
+		</node>
+		<node uid="52915d5b-9102-44b0-b0bd-50dbd49e817e" class="rosPlugin.ROSOutputNode">
+			<graphics x="423" y="533" fill="#c0c0c0"/>
+			<att name="title" type="string" value="rosTopic"/>
+			<att name="rosTopic" type="string" value="/model/vehicle_blue/cmd_vel"/>
+			<att name="rosMessageExpression" type="string" value=""/>
+			<att name="0.00" type="string" value="0"/>
+			<att name="0.01" type="string" value="0"/>
+			<att name="0.02" type="string" value="0"/>
+		</node>
+		<node uid="582c6c5c-e40e-4a35-9ab8-ae91f905c388" class="rosPlugin.ROSOutputNode">
+			<graphics x="667" y="424" fill="#c0c0c0"/>
+			<att name="title" type="string" value="rosTopic"/>
+			<att name="rosTopic" type="string" value="/model/vehicle_blue/cmd_vel"/>
+			<att name="rosMessageExpression" type="string" value=""/>
+			<att name="0.00" type="string" value="0"/>
+			<att name="0.01" type="string" value="0"/>
+			<att name="0.02" type="string" value="-0.5"/>
+		</node>
+		<node uid="7063c9ff-ffc6-441f-9653-6e19c6624911" class="edu.cmu.lti.dialogos.sphinx.plugin.SphinxNode">
+			<graphics x="325" y="312" fill="#b20000"/>
+			<att name="title" type="string" value="Speech recognizer"/>
+			<att name="language" type="string" value="Deutsch"/>
+		</node>
+		<node uid="77d9632e-32a2-4e2c-bb0b-ca09a290aea9" class="rosPlugin.ROSInputNode">
+			<graphics x="634" y="22" fill="#c0c0c0"/>
+			<att name="title" type="string" value="ROSInput"/>
+			<att name="dialogosTopic" type="string" value="/online"/>
+			<att name="resultVar" type="string" value="0fe35552-98ee-40bc-a9d9-046fc29bc954"/>
+			<att name="waitForMessage" type="string" value="true"/>
+			<att name="timeout" type="string" value="5000"/>
+		</node>
+		<node uid="7834da27-7d1b-4a40-b156-1629ce28c553" class="edu.cmu.lti.dialogos.sphinx.plugin.SphinxNode">
+			<graphics x="476" y="642" fill="#b20000"/>
+			<att name="title" type="string" value="Speech recognizer"/>
+			<att name="language" type="string" value="Deutsch"/>
+		</node>
+		<node uid="871b662c-e12c-427e-83df-6f152f746fc3" class="com.clt.diamant.graph.nodes.SleepNode">
+			<graphics x="102" y="697" fill="#99ffff"/>
+			<att name="title" type="string" value="structure"/>
+			<att name="time" type="string" value="0"/>
+		</node>
+		<node uid="9b4a816a-f290-46be-bfe7-18263d896512" class="de.saar.coli.dialogos.marytts.plugin.TTSNode">
+			<graphics x="599" y="255" fill="#00b200"/>
+			<att name="title" type="string" value="lateral"/>
+			<att name="prompt" type="text">
+				<value>Sie moechten eine laterale Bewegung ausführen. Soll sich der Roboter nach links oder nach rechts drehen?</value>
+			</att>
+			<att name="prompt_type" type="string" value="text"/>
+			<att name="wait" type="boolean" value="1"/>
+			<att name="await_silence" type="boolean" value="0"/>
+		</node>
+		<node uid="a527988d-4784-44ab-a316-16bc655c4219" class="rosPlugin.ROSOutputNode">
+			<graphics x="568" y="423" fill="#c0c0c0"/>
+			<att name="title" type="string" value="rosTopic"/>
+			<att name="rosTopic" type="string" value="/model/vehicle_blue/cmd_vel"/>
+			<att name="rosMessageExpression" type="string" value=""/>
+			<att name="0.00" type="string" value="0"/>
+			<att name="0.01" type="string" value="0"/>
+			<att name="0.02" type="string" value="0.5"/>
+		</node>
+		<node uid="a8e1b6a2-23df-438f-bdfd-7481971308fb" class="de.saar.coli.dialogos.marytts.plugin.TTSNode">
+			<graphics x="489" y="697" fill="#00b200"/>
+			<att name="title" type="string" value="Speech synthesis"/>
+			<att name="prompt" type="text">
+				<value>Danke für die Benutzung des Roboters!</value>
+			</att>
+			<att name="prompt_type" type="string" value="text"/>
+			<att name="wait" type="boolean" value="1"/>
+			<att name="await_silence" type="boolean" value="0"/>
+		</node>
+		<node uid="a9ea6c7c-bf1b-4ac7-97f2-d1e6c9f71e1d" class="de.saar.coli.dialogos.marytts.plugin.TTSNode">
+			<graphics x="324" y="257" fill="#00b200"/>
+			<att name="title" type="string" value="longitudinal"/>
+			<att name="prompt" type="text">
+				<value>Sie möchten eine longitudinale Bewegung ausfuehren. Soll sich der Roboter vorwärts oder rückwärts bewegen?</value>
+			</att>
+			<att name="prompt_type" type="string" value="text"/>
+			<att name="wait" type="boolean" value="1"/>
+			<att name="await_silence" type="boolean" value="0"/>
+		</node>
+		<node uid="c8cb74a8-e138-463a-9d38-1ff3b30eadf8" class="com.clt.diamant.graph.nodes.SleepNode">
+			<graphics x="291" y="476" fill="#99ffff"/>
+			<att name="title" type="string" value="Wait"/>
+			<att name="time" type="string" value="5000"/>
+		</node>
+		<node uid="c91039ae-de87-416a-a414-e6f6197f1df2" class="rosPlugin.ROSOutputNode">
+			<graphics x="282" y="422" fill="#c0c0c0"/>
+			<att name="title" type="string" value="/model/vehicle_blue/cmd_vel"/>
+			<att name="rosTopic" type="string" value="/model/vehicle_blue/cmd_vel"/>
+			<att name="rosMessageExpression" type="string" value=""/>
+			<att name="0.00" type="string" value="0.5"/>
+			<att name="0.01" type="string" value="0"/>
+			<att name="0.02" type="string" value="0"/>
+		</node>
+		<node uid="d1d5defa-7b63-4731-922d-ebbf9f86060b" class="de.saar.coli.dialogos.marytts.plugin.TTSNode">
+			<graphics x="674" y="367" fill="#00b200"/>
+			<att name="title" type="string" value="rechts"/>
+			<att name="prompt" type="text">
+				<value>Der Roboter dreht nun rechts!</value>
+			</att>
+			<att name="prompt_type" type="string" value="text"/>
+			<att name="wait" type="boolean" value="1"/>
+			<att name="await_silence" type="boolean" value="0"/>
+		</node>
+		<node uid="dbd8d47b-5a9d-47d6-b927-896611597342" class="edu.cmu.lti.dialogos.sphinx.plugin.SphinxNode">
+			<graphics x="481" y="160" fill="#b20000"/>
+			<att name="title" type="string" value="Speech recognizer"/>
+			<att name="language" type="string" value="Deutsch"/>
+		</node>
+		<node uid="dec439d5-601b-4e9d-b489-ddcaf984880d" class="rosPlugin.ROSOutputNode">
+			<graphics x="420" y="423" fill="#c0c0c0"/>
+			<att name="title" type="string" value="rosTopic"/>
+			<att name="rosTopic" type="string" value="/model/vehicle_blue/cmd_vel"/>
+			<att name="rosMessageExpression" type="string" value=""/>
+			<att name="0.00" type="string" value="-0.5"/>
+			<att name="0.01" type="string" value="0"/>
+			<att name="0.02" type="string" value="0"/>
+		</node>
+		<node uid="e342c9f8-d8bd-4190-9358-c4cedc56451c" class="com.clt.diamant.graph.nodes.SleepNode">
+			<graphics x="682" y="477" fill="#99ffff"/>
+			<att name="title" type="string" value="Wait"/>
+			<att name="time" type="string" value="4000"/>
+		</node>
+		<node uid="e95b475c-c324-4108-a7c0-c992297741fd" class="rosPlugin.ROSOutputNode">
+			<graphics x="575" y="541" fill="#c0c0c0"/>
+			<att name="title" type="string" value="rosTopic"/>
+			<att name="rosTopic" type="string" value="/model/vehicle_blue/cmd_vel"/>
+			<att name="rosMessageExpression" type="string" value=""/>
+			<att name="0.00" type="string" value="0"/>
+			<att name="0.01" type="string" value="0"/>
+			<att name="0.02" type="string" value="0"/>
+		</node>
+		<node uid="ede8f4de-6a69-4013-bd6d-94528fd28b36" class="com.clt.diamant.graph.nodes.EndNode">
+			<graphics x="630" y="698" fill="#9999ff"/>
+			<att name="title" type="string" value="End"/>
+		</node>
+		<node uid="f446b99a-15bb-46da-a988-47112eefed63" class="edu.cmu.lti.dialogos.sphinx.plugin.SphinxNode">
+			<graphics x="600" y="312" fill="#b20000"/>
+			<att name="title" type="string" value="Speech recognizer"/>
+			<att name="language" type="string" value="Deutsch"/>
+		</node>
+		<node uid="ff19a287-8108-4f7c-8f9f-b4c85634bdef" class="com.clt.diamant.graph.nodes.StartNode">
+			<graphics x="558" y="21" fill="#9999ff"/>
+			<att name="title" type="string" value="Start"/>
+		</node>
+		<edge src="0a75c338-3919-4e14-811f-154146cab40c" tgt="dbd8d47b-5a9d-47d6-b927-896611597342">
+		</edge>
+		<edge src="0f7c0ec1-a739-4bf2-801a-a4051dde22f4" tgt="0a75c338-3919-4e14-811f-154146cab40c">
+		</edge>
+		<edge src="124c01df-b4ba-4f7a-90fd-3c54d56b5404" tgt="ede8f4de-6a69-4013-bd6d-94528fd28b36">
+		</edge>
+		<edge src="18dcab0c-8ee5-436a-8640-dd03edc8efbd" tgt="dec439d5-601b-4e9d-b489-ddcaf984880d">
+		</edge>
+		<edge src="1bf67d55-6f24-4333-89f9-294324dbb184" tgt="e95b475c-c324-4108-a7c0-c992297741fd">
+		</edge>
+		<edge src="27d8cbaf-9427-4d98-9d3e-cb6195ad41ea" tgt="124c01df-b4ba-4f7a-90fd-3c54d56b5404">
+		</edge>
+		<edge src="32c645d2-6faa-40ad-b713-c0528724ad83" tgt="7834da27-7d1b-4a40-b156-1629ce28c553">
+		</edge>
+		<edge src="3916d1e0-67a5-42bd-ac08-3aadacfb48fd" tgt="4095063f-613d-491a-b434-1a358610bc3f">
+			<att name="condition" type="string" value="online == &quot;Roboter verfügbar&quot;"/>
+		</edge>
+		<edge src="3916d1e0-67a5-42bd-ac08-3aadacfb48fd" tgt="27d8cbaf-9427-4d98-9d3e-cb6195ad41ea">
+			<att name="condition" type="string" value="else"/>
+		</edge>
+		<edge src="4095063f-613d-491a-b434-1a358610bc3f" tgt="0a75c338-3919-4e14-811f-154146cab40c">
+		</edge>
+		<edge src="448bdc65-051c-4787-8271-c4140d597045" tgt="c91039ae-de87-416a-a414-e6f6197f1df2">
+		</edge>
+		<edge src="4aecacfe-9008-469f-81b6-1fc7d1b28cff" tgt="32c645d2-6faa-40ad-b713-c0528724ad83">
+		</edge>
+		<edge src="4d0ec2ae-3207-432d-9692-c4cb4346ab8b" tgt="a527988d-4784-44ab-a316-16bc655c4219">
+		</edge>
+		<edge src="4ee341fb-7323-4103-a775-187144b1b108" tgt="32c645d2-6faa-40ad-b713-c0528724ad83">
+		</edge>
+		<edge src="4f45cb0d-9d0a-4046-8f1c-53ce5e65a69f" tgt="52915d5b-9102-44b0-b0bd-50dbd49e817e">
+		</edge>
+		<edge src="52915d5b-9102-44b0-b0bd-50dbd49e817e" tgt="32c645d2-6faa-40ad-b713-c0528724ad83">
+		</edge>
+		<edge src="582c6c5c-e40e-4a35-9ab8-ae91f905c388" tgt="e342c9f8-d8bd-4190-9358-c4cedc56451c">
+		</edge>
+		<edge src="7063c9ff-ffc6-441f-9653-6e19c6624911" tgt="448bdc65-051c-4787-8271-c4140d597045">
+			<att name="condition" type="string" value="vorwärts"/>
+		</edge>
+		<edge src="7063c9ff-ffc6-441f-9653-6e19c6624911" tgt="18dcab0c-8ee5-436a-8640-dd03edc8efbd">
+			<att name="condition" type="string" value="rückwärts"/>
+		</edge>
+		<edge src="77d9632e-32a2-4e2c-bb0b-ca09a290aea9" tgt="3916d1e0-67a5-42bd-ac08-3aadacfb48fd">
+		</edge>
+		<edge src="7834da27-7d1b-4a40-b156-1629ce28c553" tgt="871b662c-e12c-427e-83df-6f152f746fc3">
+			<att name="condition" type="string" value="&quot;Ja&quot; | &quot;soll Bewegungen ausführen&quot;"/>
+		</edge>
+		<edge src="7834da27-7d1b-4a40-b156-1629ce28c553" tgt="a8e1b6a2-23df-438f-bdfd-7481971308fb">
+			<att name="condition" type="string" value="&quot;Nein&quot; | &quot;soll keine Bewegungen ausführen&quot;"/>
+		</edge>
+		<edge src="871b662c-e12c-427e-83df-6f152f746fc3" tgt="0f7c0ec1-a739-4bf2-801a-a4051dde22f4">
+		</edge>
+		<edge src="9b4a816a-f290-46be-bfe7-18263d896512" tgt="f446b99a-15bb-46da-a988-47112eefed63">
+		</edge>
+		<edge src="a527988d-4784-44ab-a316-16bc655c4219" tgt="1bf67d55-6f24-4333-89f9-294324dbb184">
+		</edge>
+		<edge src="a8e1b6a2-23df-438f-bdfd-7481971308fb" tgt="ede8f4de-6a69-4013-bd6d-94528fd28b36">
+		</edge>
+		<edge src="a9ea6c7c-bf1b-4ac7-97f2-d1e6c9f71e1d" tgt="7063c9ff-ffc6-441f-9653-6e19c6624911">
+		</edge>
+		<edge src="c8cb74a8-e138-463a-9d38-1ff3b30eadf8" tgt="4ee341fb-7323-4103-a775-187144b1b108">
+		</edge>
+		<edge src="c91039ae-de87-416a-a414-e6f6197f1df2" tgt="c8cb74a8-e138-463a-9d38-1ff3b30eadf8">
+		</edge>
+		<edge src="d1d5defa-7b63-4731-922d-ebbf9f86060b" tgt="582c6c5c-e40e-4a35-9ab8-ae91f905c388">
+		</edge>
+		<edge src="dbd8d47b-5a9d-47d6-b927-896611597342" tgt="a9ea6c7c-bf1b-4ac7-97f2-d1e6c9f71e1d">
+			<att name="condition" type="string" value="long"/>
+		</edge>
+		<edge src="dbd8d47b-5a9d-47d6-b927-896611597342" tgt="9b4a816a-f290-46be-bfe7-18263d896512">
+			<att name="condition" type="string" value="lateral"/>
+		</edge>
+		<edge src="dec439d5-601b-4e9d-b489-ddcaf984880d" tgt="4f45cb0d-9d0a-4046-8f1c-53ce5e65a69f">
+		</edge>
+		<edge src="e342c9f8-d8bd-4190-9358-c4cedc56451c" tgt="4aecacfe-9008-469f-81b6-1fc7d1b28cff">
+		</edge>
+		<edge src="e95b475c-c324-4108-a7c0-c992297741fd" tgt="32c645d2-6faa-40ad-b713-c0528724ad83">
+		</edge>
+		<edge src="f446b99a-15bb-46da-a988-47112eefed63" tgt="4d0ec2ae-3207-432d-9692-c4cb4346ab8b">
+			<att name="condition" type="string" value="links"/>
+		</edge>
+		<edge src="f446b99a-15bb-46da-a988-47112eefed63" tgt="d1d5defa-7b63-4731-922d-ebbf9f86060b">
+			<att name="condition" type="string" value="rechts"/>
+		</edge>
+		<edge src="ff19a287-8108-4f7c-8f9f-b4c85634bdef" tgt="77d9632e-32a2-4e2c-bb0b-ca09a290aea9">
+		</edge>
+	</graph>
+</wizard>
