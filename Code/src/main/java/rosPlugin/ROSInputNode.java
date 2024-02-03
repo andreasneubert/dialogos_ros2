@@ -91,6 +91,7 @@ public class ROSInputNode extends Node {
         }
     }
 
+    // check if subscriber has changed
     private void scheduleVariableCheckTask() {
         double intervalSeconds = 0.2; // Adjust the interval as needed (e.g., 0.5 seconds)
         scheduler.scheduleAtFixedRate(this::checkSubscribedTopicChange, 0, (long) (intervalSeconds * 1000),
@@ -146,7 +147,7 @@ public class ROSInputNode extends Node {
     @Override
     public Node execute(WozInterface wozInterface, InputCenter inputCenter, ExecutionLogger executionLogger) {
 
-        List<String> messages = new ArrayList<>();
+        // List<String> messages = new ArrayList<>();
         String message_string_value = "";
         switchSubscriberClient();
         if (getBooleanProperty(WAIT_FOR_MESSAGE)) {
@@ -167,8 +168,12 @@ public class ROSInputNode extends Node {
                     if (!currentMessage.isEmpty()) {
                         System.out.println("Message received: " + currentMessage);
                         if (currentMessage != null) {
-                            messages.add(currentMessage);
+                            // messages.add(currentMessage);
                             message_string_value = currentMessage;
+                            StringValue messageString = new StringValue(message_string_value);
+                            String varName = getProperty(RESULT_VAR).toString();
+                            Slot var = getSlot(varName);
+                            var.setValue(messageString);
                         }
                     } else {
                         System.out.println("Timeout: No message received within the specified time.");
@@ -179,12 +184,8 @@ public class ROSInputNode extends Node {
             }
         }
 
-        ListValue messageList = new ListValue(messages.stream().map(StringValue::new).collect(Collectors.toList()));
-        StringValue messageString = new StringValue(message_string_value);
-
-        String varName = getProperty(RESULT_VAR).toString();
-        Slot var = getSlot(varName);
-        var.setValue(messageString);
+        // ListValue messageList = new ListValue(messages.stream().map(StringValue::new).collect(Collectors.toList()));
+     
         return getEdge(0).getTarget();
     }
 

@@ -137,13 +137,13 @@ public class ROSOutputNode extends Node {
                     if (!isVectorType) {
                         isVectorType = true;
                         addVectorInputPanel(p, properties);
-                        removeMessageInputPanel(p); // Remove message input panel
+                        removeMessageInputPanel(p); 
                     }
                 } else {
                     isVectorType = false;
                     removeMessageInputPanel(p);
                     removeVectorInputPanel(p);
-                    addMessageInputPanel(p, properties); // Add message input panel
+                    addMessageInputPanel(p, properties); 
                 }
     
                 System.out.println("ROSMESSAGE TYPE: " + ROSMESSAGETYPE);
@@ -161,14 +161,12 @@ public class ROSOutputNode extends Node {
         p.add(dropdownPanel);
     
         if (!isVectorType) {
-            // Panel for message expression input
             addMessageInputPanel(p, properties);
         }
     
         return p;
     }
     
-    // Method to add panel for message expression input
     private void addMessageInputPanel(JPanel parentPanel, Map<String, Object> properties) {
         JPanel horiz = new JPanel();
         horiz.add(new JLabel("message expression"));
@@ -176,7 +174,6 @@ public class ROSOutputNode extends Node {
         parentPanel.add(horiz);
     }
     
-    // Method to remove panel for message expression input
     private void removeMessageInputPanel(JPanel parentPanel) {
         Component[] components = parentPanel.getComponents();
         for (Component component : components) {
@@ -195,7 +192,6 @@ public class ROSOutputNode extends Node {
         }
     }
 
-    // Method to add panel for vector input
     private void addVectorInputPanel(JPanel parentPanel, Map<String, Object> properties) {
         JPanel vectorPanel = new JPanel();
         vectorPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -203,17 +199,17 @@ public class ROSOutputNode extends Node {
 
         // Input fields for x, y, and z values
         JTextField xField = NodePropertiesDialog.createTextField(properties, X_VAL);
-        xField.setColumns(5); // Adjust the width of the input field
+        xField.setColumns(5);
         vectorPanel.add(new JLabel("X:"));
         vectorPanel.add(xField);
 
         JTextField yField = NodePropertiesDialog.createTextField(properties, Y_VAL);
-        yField.setColumns(5); // Adjust the width of the input field
+        yField.setColumns(5); 
         vectorPanel.add(new JLabel("Y:"));
         vectorPanel.add(yField);
 
         JTextField zField = NodePropertiesDialog.createTextField(properties, Z_VAL);
-        zField.setColumns(5); // Adjust the width of the input field
+        zField.setColumns(5); 
         vectorPanel.add(new JLabel("Z:"));
         vectorPanel.add(zField);
 
@@ -222,7 +218,6 @@ public class ROSOutputNode extends Node {
         parentPanel.repaint();
     }
 
-    // Method to remove panel for vector input
     private void removeVectorInputPanel(JPanel parentPanel) {
         Component[] components = parentPanel.getComponents();
         for (Component component : components) {
