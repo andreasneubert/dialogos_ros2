@@ -114,6 +114,8 @@ The RosOutputNode enables users to publish messages to ROS Topics.
 1. **Ros Topic Name**: Specifies the name of the ROS Topic to which the message will be published.
 2. **Message Type**: Indicates the type of message to be published. Options include string, int, geometry_msgs/Twist/Linear, and geometry_msgs/Twist/Angular.
 3. **Message Expression or Vector Values**: Depending on the selected message type, users can provide either a message expression or vector values.
+![concept](/graphics/string_output.png "output node string")
+![concept](/graphics/geometry_output.png "output node geometry")
 
 ## RosInputNode
 The RosInputNode allows for the reception of string-type ROS messages.
@@ -122,7 +124,7 @@ The RosInputNode allows for the reception of string-type ROS messages.
 1. **Ros Topic Name**: Specifies the name of the ROS Topic from which messages will be received.
 2. **Variable to Store the Result**: Designates the variable in which the received message will be stored.
 3. **Waiting Delay**: Specifies the duration for which the node will wait for messages before timing out.
-
+![concept](/graphics/input.png "input node")
 
 
 # What the project does
